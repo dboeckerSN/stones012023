@@ -8,7 +8,7 @@ import { Product } from './product/product';
 })
 export class AppComponent {
   title = 'Stones';
-  // parentProduct = new Product(0, 'Grabstein Granit', 12.56, 32.45);
+  today = new Date();
   products: Product[] = [
     {
       id: 0,
@@ -53,8 +53,4 @@ export class AppComponent {
       weight: 38,
     },
   ];
-  // onPriceChanged(price: number) {
-  //   alert('Neuer Preis: ' + price);
-  //   this.parentProduct.price = price;
-  // }
 }
