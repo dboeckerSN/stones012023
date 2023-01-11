@@ -8,8 +8,8 @@
     <li>Preis Brutto 7%: {{product.price | netto:7:"brutto" | currency:"€" }}</li>
     <li>Gewicht: {{product.weight}}</li>
   </ul>
-  <input type="number" #price /> <br />
-  <button (click)="changePrice(price.value)">Preis ändern</button>
-  <button (click)="raisePrice()">Preis erhöhen</button><br/>
-  <button (click)="togglePrice()">Preisanzeige toggeln</button>
 </div>
+<input type="number" #price /> <br />
+<button mat-raised-button (click)="changePrice(price.value)">Preis ändern</button>
+<button mat-raised-button color="primary" (click)="raisePrice()">Preis erhöhen</button><br/>
+<button mat-raised-button color="primary" (click)="togglePrice()">Preisanzeige toggeln</button>
