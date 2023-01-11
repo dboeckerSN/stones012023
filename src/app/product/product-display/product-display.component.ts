@@ -9,9 +9,22 @@ import { Product } from '../product';
 export class ProductDisplayComponent {
   @Input() product!: Product;
   @Output() priceChange = new EventEmitter<number>();
+  showPrice = true;
+
+  styleConfig = {
+    'border-style': 'dashed',
+  };
+
+  togglePrice() {
+    this.showPrice = !this.showPrice;
+  }
 
   raisePrice() {
     this.product.price += 5;
     this.priceChange.emit(this.product.price);
+  }
+
+  changePrice(price: string) {
+    this.product.price = Number(price);
   }
 }

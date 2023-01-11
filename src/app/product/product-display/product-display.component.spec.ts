@@ -31,7 +31,7 @@ describe('ProductDisplayComponent', () => {
     expect(component.product.price).toBe(currentPrice + 5);
   });
 
-  it('should raise price', () => {
+  it('should show product name', () => {
     const nameElment = fixture.debugElement.query(By.css('#name'));
 
     expect(nameElment.nativeElement.textContent).toContain('Teststein');
