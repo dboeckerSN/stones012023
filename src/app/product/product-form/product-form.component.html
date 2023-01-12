@@ -8,10 +8,13 @@
   <mat-form-field>
     <mat-label>Preis</mat-label>
     <input matInput type="number" formControlName="price">
+    <mat-error *ngIf="productForm.controls.price.hasError('required')">Das ist ein Pflichtfeld!</mat-error>
+    <mat-error *ngIf="productForm.controls.price.hasError('positiv')">Preis muss größer 0 sein!</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Gewicht</mat-label>
     <input matInput type="number" formControlName="weight">
+    <mat-error *ngIf="productForm.controls.weight.hasError('required')">Das ist ein Pflichtfeld!</mat-error>
   </mat-form-field>
   <button color="accent" (click)="save()" [disabled]="!this.productForm.valid" mat-raised-button>Speichern</button>
   {{productForm.value | json}}

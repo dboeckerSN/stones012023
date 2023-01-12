@@ -16,14 +16,14 @@ import { Product } from '../product';
 export class ProductFormComponent {
   @Output() onSave = new EventEmitter<Product>();
   // productForm = new FormGroup({
-  //   name: new FormControl('', [Validators.required]),
-  //   price: new FormControl(0),
-  //   weight: new FormControl(0),
+  //   name: new FormControl('', [Validators.required, CustomValidators.alphaNum]),
+  //   price: new FormControl(0, [Validators.required, CustomValidators.positiv]),
+  //   weight: new FormControl(0, [Validators.required]),
   // });
   productForm = this.fb.group({
     name: ['', [Validators.required, CustomValidators.alphaNum]],
-    price: [0],
-    weight: [0],
+    price: [0, [Validators.required, CustomValidators.positiv]],
+    weight: [0, [Validators.required]],
   });
   constructor(private fb: FormBuilder) {}
 
@@ -41,7 +41,6 @@ export class ProductFormComponent {
         price: formVal.price,
         weight: formVal.weight,
       };
-      // const newProduct2 = new Product(-1, formVal.name, formVal.price, formVal.weight)
 
       this.onSave.emit(newProduct);
       this.productForm.reset();
