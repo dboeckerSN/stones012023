@@ -1,8 +1,9 @@
-<mat-toolbar color="primary"><span>Stones</span></mat-toolbar>
+<mat-toolbar color="primary">
+  <span>Stones</span>
+  <a [routerLink]="['/products']">Produktliste</a>
+  <a [routerLink]="['/products/new']">Produktformular</a>
+</mat-toolbar>
 {{today | date: 'fullDate'}}
-<stn-product-form (onSave)="onSaveProduct($event)"></stn-product-form>
+<router-outlet></router-outlet>
 
-<mat-card *ngFor="let prod of products | slice:0:3; let isOdd = odd" [ngClass]="{'grey-background' : isOdd}">
-  <stn-product-display [product]="prod">
-  </stn-product-display>
-</mat-card>
+<button>Armins Knopf</button>

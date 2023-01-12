@@ -18,4 +18,5 @@
   </mat-form-field>
   <button color="accent" (click)="save()" [disabled]="!this.productForm.valid" mat-raised-button>Speichern</button>
   {{productForm.value | json}}
+  ID: {{id}}
 </form>

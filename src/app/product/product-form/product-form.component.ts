@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CustomValidators } from 'src/app/utils/custom-validators';
 import { Product } from '../product';
 
@@ -25,7 +26,15 @@ export class ProductFormComponent {
     price: [0, [Validators.required, CustomValidators.positiv]],
     weight: [0, [Validators.required]],
   });
-  constructor(private fb: FormBuilder) {}
+  id = -1;
+  constructor(private fb: FormBuilder, private route: ActivatedRoute) {
+    this.route.paramMap.subscribe((paramMap) => {
+      const prodId = paramMap.get('id');
+      if (prodId) {
+        this.id = Number(prodId);
+      }
+    });
+  }
 
   save() {
     const formVal = this.productForm.value;
@@ -36,7 +45,7 @@ export class ProductFormComponent {
       formVal.weight
     ) {
       const newProduct: Product = {
-        id: -1,
+        id: this.id,
         name: formVal.name,
         price: formVal.price,
         weight: formVal.weight,
@@ -44,6 +53,20 @@ export class ProductFormComponent {
 
       this.onSave.emit(newProduct);
       this.productForm.reset();
+    }
+  }
+
+  hasSaved(): boolean {
+    if (
+      !this.productForm.value.name &&
+      !this.productForm.value.price &&
+      !this.productForm.value.weight
+    ) {
+      return true;
+    } else {
+      return confirm(
+        'Sie haben ungespeicherte Änderungen, wollen sie wirklich weg?'
+      );
     }
   }
 }
