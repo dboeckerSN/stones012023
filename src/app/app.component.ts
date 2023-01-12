@@ -53,4 +53,8 @@ export class AppComponent {
       weight: 38,
     },
   ];
+
+  onSaveProduct(product: Product) {
+    this.products.unshift(product);
+  }
 }

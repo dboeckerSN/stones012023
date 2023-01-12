@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { ProductModule } from './product/product.module';
@@ -6,7 +7,7 @@ import { ProductModule } from './product/product.module';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, ProductModule],
+      imports: [RouterTestingModule, ProductModule, MatToolbarModule],
       declarations: [AppComponent],
     }).compileComponents();
   });
