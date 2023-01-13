@@ -1,10 +1,9 @@
+import { CommonModule, NgIf } from '@angular/common';
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CustomValidators } from 'src/app/utils/custom-validators';
@@ -12,9 +11,17 @@ import { Product } from '../product';
 import { ProductService } from '../product.service';
 
 @Component({
+  standalone: true,
   selector: 'stn-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css'],
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgIf,
+    MatButtonModule,
+  ],
 })
 export class ProductFormComponent {
   // @Output() onSave = new EventEmitter<Product>();

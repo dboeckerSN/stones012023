@@ -30,6 +30,6 @@ export class MockProductService {
     ]);
   }
   newProduct() {
-    of();
+    return of();
   }
 }

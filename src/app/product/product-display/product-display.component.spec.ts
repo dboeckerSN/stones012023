@@ -1,6 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
 import { By } from '@angular/platform-browser';
-import { UtilsModule } from 'src/app/utils/utils.module';
+import { NettoPipe } from 'src/app/utils/pipes/netto.pipe';
 import { Product } from '../product';
 
 import { ProductDisplayComponent } from './product-display.component';
@@ -11,8 +13,12 @@ describe('ProductDisplayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductDisplayComponent],
-      imports: [UtilsModule],
+      imports: [
+        ProductDisplayComponent,
+        CommonModule,
+        NettoPipe,
+        MatButtonModule,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductDisplayComponent);

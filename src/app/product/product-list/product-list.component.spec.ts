@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProductModule } from '../product.module';
 import { MockProductService, ProductService } from '../product.service';
 
 import { ProductListComponent } from './product-list.component';
@@ -11,8 +10,7 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductListComponent],
-      imports: [ProductModule, RouterTestingModule],
+      imports: [ProductListComponent, RouterTestingModule],
       providers: [{ provide: ProductService, useClass: MockProductService }],
     }).compileComponents();
 
