@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 import { CustomValidators } from 'src/app/utils/custom-validators';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -28,6 +29,8 @@ export class ProductFormComponent {
     weight: [0, [Validators.required]],
   });
   id = -1;
+  nameReversed = '';
+  nameLength = 0;
 
   private productService = inject(ProductService);
 
@@ -37,6 +40,15 @@ export class ProductFormComponent {
       if (prodId) {
         this.id = Number(prodId);
       }
+    });
+
+    this.productForm.controls.name.valueChanges
+      .pipe(map((name) => (name ? name.split('').reverse().join('') : '')))
+      .subscribe((nameRev) => {
+        this.nameReversed = nameRev;
+      });
+    this.productForm.controls.name.valueChanges.subscribe((value) => {
+      this.nameLength = value ? value.length : 0;
     });
   }
 

@@ -1,7 +1,7 @@
 <form [formGroup]="productForm">
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput formControlName="name">
+    <input matInput formControlName="name" autocomplete="off">
     <mat-error *ngIf="productForm.get('name')?.hasError('required')">Das ist ein Pflichtfeld!</mat-error>
     <mat-error *ngIf="productForm.controls.name.hasError('alphaNum')">Nur alphanummerische Werte!</mat-error>
   </mat-form-field>
@@ -16,7 +16,8 @@
     <input matInput type="number" formControlName="weight">
     <mat-error *ngIf="productForm.controls.weight.hasError('required')">Das ist ein Pflichtfeld!</mat-error>
   </mat-form-field>
-  <button color="accent" (click)="save()" [disabled]="!this.productForm.valid" mat-raised-button>Speichern</button>
-  {{productForm.value | json}}
-  ID: {{id}}
+  <button color="accent" (click)="save()" [disabled]="!this.productForm.valid" mat-raised-button>Speichern</button><br/><br /><br />
+  ID: {{id}} <br/>
+  Namen umgedreht: {{nameReversed}}<br>
+  {{'Name Länge: ' + nameLength}}
 </form>
