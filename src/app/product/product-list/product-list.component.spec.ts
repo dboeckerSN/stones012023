@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ProductModule } from '../product.module';
+import { MockProductService, ProductService } from '../product.service';
 
 import { ProductListComponent } from './product-list.component';
 
@@ -8,9 +11,10 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ]
-    })
-    .compileComponents();
+      declarations: [ProductListComponent],
+      imports: [ProductModule, RouterTestingModule],
+      providers: [{ provide: ProductService, useClass: MockProductService }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
@@ -19,5 +23,9 @@ describe('ProductListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should read products from service', () => {
+    expect(component.products[0].name).toBe('armin');
   });
 });
