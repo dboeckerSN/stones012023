@@ -1,4 +1,4 @@
-<mat-card *ngFor="let prod of products; let isOdd = odd" [ngClass]="{'grey-background' : isOdd}">
+<mat-card *ngFor="let prod of products | async; let isOdd = odd" [ngClass]="{'grey-background' : isOdd}">
   <stn-product-display [product]="prod">
   </stn-product-display>
   <button mat-raised-button [routerLink]="['/products/new', prod.id]">Formular Öffnen</button>

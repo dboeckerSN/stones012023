@@ -26,6 +26,8 @@ describe('ProductListComponent', () => {
   });
 
   it('should read products from service', () => {
-    expect(component.products[0].name).toBe('armin');
+    component.products?.subscribe((products) => {
+      expect(products[0].name).toBe('armin');
+    });
   });
 });

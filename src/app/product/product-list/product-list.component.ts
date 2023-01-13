@@ -8,9 +8,11 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent {
-  products: Product[] = inject(ProductService).getList();
+  products = inject(ProductService).getList();
 
   // constructor(private productService: ProductService) {
-  //   this.products = this.productService.getList();
+  //   this.productService
+  //     .getList()
+  //     .subscribe((products: Product[]) => (this.products = products));
   // }
 }

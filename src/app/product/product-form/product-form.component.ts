@@ -60,14 +60,13 @@ export class ProductFormComponent {
       formVal.price &&
       formVal.weight
     ) {
-      const newProduct: Product = {
-        id: this.id,
+      const newProduct: Partial<Product> = {
         name: formVal.name,
         price: formVal.price,
         weight: formVal.weight,
       };
 
-      this.productService.newProduct(newProduct);
+      this.productService.newProduct(newProduct).subscribe();
       this.productForm.reset();
     }
   }
